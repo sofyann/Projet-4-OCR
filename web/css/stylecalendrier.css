@@ -1,0 +1,54 @@
+body{
+    font-family: "Segoe UI";
+    margin: 0px;
+    padding: 0px;
+}
+.currentDay{
+  color: white;
+}
+#prev, #next{
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+}
+#content{
+    background-color: #D9EAF5;
+    margin-left: 10px;
+    width: 300px;
+    height: 270px;
+    margin-top: 10px;
+    padding: 5px;
+    border: 1px solid #474747;
+    border-radius: 5px;
+}
+h1, table{
+    text-align: center;
+    margin: 10px auto;
+}
+#prev{
+    float: left;
+    margin-top: 5px;
+
+}
+#next{
+    float: right;
+    margin-top: 5px;
+}
+#week, h1{
+    color: #4A7494;
+}
+table{
+    border-collapse: separate;
+    border-spacing: 3px 5px;
+}
+h1{
+    margin-top: 15px;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.notClickable{
+    color: #A2C2DB;
+}
