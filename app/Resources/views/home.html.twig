@@ -3,32 +3,65 @@
         Musée du Louvre
     {% endblock %}
     {% block stylesheets %}
+        {{ parent() }}
         <link rel="stylesheet" href="{{ asset('css/stylecalendrier.css') }}">
     {% endblock %}
 {% block body %}
     <div class="banner">
         <h1 id="mainTitle">Achetez vos billets maintenant !</h1>
     </div>
-    <div class="container">
-    <div class="">
+    <div class="container content">
+        <div class="row">
+            <div id="calendar" class="col-md-5">
+                <h1> <span id="prev" class="glyphicon glyphicon-chevron-left"></span> <span id="monthAndYear"></span> <span id="next" class="glyphicon glyphicon-chevron-right"></span></h1>
+                <table >
+                    <thead id="week">
+                        <td>lun.</td>
+                        <td>mar.</td>
+                        <td>mer.</td>
+                        <td>jeu.</td>
+                        <td>ven.</td>
+                        <td>sam.</td>
+                        <td>dim.</td>
+                    </thead>
+                    <tbody id="allDays">
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-md-1">
+                <span class="glyphicon glyphicon-info-sign" style="font-size: 50px; color:#9ECAFF; float: right"></span>
+            </div>
 
-    </div>
+            <div class="col-md-7">
 
+                <p>
+                    Tarifs :<br>
+                    - moins de 4ans : gratuit<br>
+                    - de 4 à 11ans : 8€<br>
+                    - de 12 à 59ans : 16€<br>
+                    - à partir de 60ans : 12€<br>
+                    - tarif réduit : 10€ (étudiant, employé du musée, d'un service du ministère de la Culture, militaire...)
+                    Si vous disposez d'un tarif réduit, un justificatif vous sera demandé lors de l'entrée au musée.<br>
 
+                    Demi-journée : permet de rentrer qu'à partir de 14h00<br>
+                    Le musée est ouvert tous les jours sauf : le mardi, les 1er mai, les 1er novembre et les 25 décembre.<br>
+                </p>
+            </div>
+        </div>
+        <div class="row">
 
-
-
-
-
-
-
-
+        </div>
+        <hr>
+        <footer>
+            <p>The Sky's jjjjj</p>
+        </footer>
     </div>
 
 
 
 
     {% block javascripts %}
+        {{ parent() }}
         <script src="{{ asset('js/calendrier.js') }}"></script>
     {% endblock %}
 {% endblock %}
