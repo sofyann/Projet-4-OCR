@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Form\CommandeType;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -16,8 +17,10 @@ class MainController extends Controller
 {
 
     public function homeAction(){
-
-        return $this->render('home.html.twig');
+        $form = $this->createForm(CommandeType::class);
+        return $this->render('home.html.twig', [
+            'form'=> $form->createView()
+        ]);
     }
 
 }

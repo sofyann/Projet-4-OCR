@@ -13,7 +13,11 @@
     <div class="container content">
         <div class="row">
             <div id="calendar" class="col-md-5">
-                <h1> <span id="prev" class="glyphicon glyphicon-chevron-left"></span> <span id="monthAndYear"></span> <span id="next" class="glyphicon glyphicon-chevron-right"></span></h1>
+                <h1>
+                    <span id="prev" class="glyphicon glyphicon-chevron-left"></span>
+                    <span id="monthAndYear"></span>
+                    <span id="next" class="glyphicon glyphicon-chevron-right"></span>
+                </h1>
                 <table >
                     <thead id="week">
                         <td>lun.</td>
@@ -49,7 +53,18 @@
             </div>
         </div>
         <div class="row">
+            <div id="form">
+                <p>
+                    Nombre de visiteurs :
+                    <span class="glyphicon glyphicon-plus-sign" id="addVisitor"></span><span id="numberOfVisitors">1</span>
+                    <span class="glyphicon glyphicon-minus-sign" id="deleteVisitor"></span>
+                </p>
 
+                {{ form_start(form) }}
+                
+
+                {{ form_end(form) }}
+            </div>
         </div>
         <hr>
         <footer>
@@ -63,5 +78,6 @@
     {% block javascripts %}
         {{ parent() }}
         <script src="{{ asset('js/calendrier.js') }}"></script>
+        <script src="{{ asset('js/form.js') }}"></script>
     {% endblock %}
 {% endblock %}

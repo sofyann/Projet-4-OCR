@@ -4,6 +4,8 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,7 +16,16 @@ class CommandeType extends AbstractType
     {
         $builder
             ->add('date', DateTimeType::class)
-            ->add('Demi-Journée', CheckboxType::class);
+            ->add('duree', ChoiceType::class, [
+                'choices'=> ['Demi-journée' =>'halfDay', 'Journée entière' =>'fullDay'],
+                'multiple' => false,
+                'expanded' => true
+            ])
+            ->add('visiteurs', CollectionType::class, [
+                'entry_type' => VisitorType::class,
+                 'allow_add' => true,
+                 'allow_delete' => true
+            ]);
 
 
     }
