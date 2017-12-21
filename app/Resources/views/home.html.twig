@@ -7,9 +7,7 @@
         <link rel="stylesheet" href="{{ asset('css/stylecalendrier.css') }}">
     {% endblock %}
 {% block body %}
-    <div class="banner">
-        <h1 id="mainTitle">Achetez vos billets maintenant !</h1>
-    </div>
+
     <div class="container content">
         <div class="row">
             <div id="calendar" class="col-md-5">
@@ -60,7 +58,7 @@
                     <span class="glyphicon glyphicon-minus-sign" id="deleteVisitor"></span>
                 </p>
 
-                {{ form_start(form, {'attr' : {'class': 'form-horizontal'}}) }}
+                {{ form_start(form, {'attr' : {'class': 'form-horizontal'}, 'action': path('purchase'), 'method' : 'POST'} ) }}
                     <div class="form-group" style="float: right">
                         {{ form_widget(form.duree) }}
                         {{ form_errors(form.duree) }}
@@ -68,20 +66,17 @@
                 {{ form_errors(form) }}
                 {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
                 {{ form_row(form.visiteurs) }}
-                {{ form_end(form) }}
-
                 <div class="btn-submit">
                     <input type="submit" value="Acheter vos billets" class="btn btn-primary btn-submit">
                 </div>
+                {{ form_end(form) }}
+
 
 
             </div>
         </div>
 
-        <hr>
-        <footer>
-            <p>Musée du Louvre © Tous droits réservés</p>
-        </footer>
+
     </div>
 
 
