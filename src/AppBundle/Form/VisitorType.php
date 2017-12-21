@@ -5,6 +5,7 @@ namespace AppBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -14,14 +15,42 @@ class VisitorType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('prenom', TextType::class)
-            ->add('nom', TextType::class)
-            ->add('pays', TextType::class)
-            ->add('date_de_naissance', TextType::class)
+            ->add('prenom', TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Prénom',
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('nom', TextType::class,[
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Nom',
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('pays', TextType::class, [
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Pays',
+                    'class' => 'form-control'
+                ]
+            ])
+            ->add('date_de_naissance', DateType::class, [
+                'widget' => 'single_text',
+                'label' => false,
+                'attr' => [
+                    'placeholder' => 'Date de naissance',
+                    'class' => 'form-control col-md-5'
+
+                ]
+            ])
             ->add('tarif_reduit', ChoiceType::class,[
                 'choices'=> ['Tarif reduit' =>'tarifReduit'],
                 'multiple' => false,
-                'expanded' => true
+                'expanded' => true,
+                'label' => false,
+
             ]);
     }
 

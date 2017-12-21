@@ -53,31 +53,43 @@
             </div>
         </div>
         <div class="row">
-            <div id="form">
-                <p>
+            <div id="form" class="well" style="background-color: #E9F3FF">
+                <p style="float: left">
                     Nombre de visiteurs :
-                    <span class="glyphicon glyphicon-plus-sign" id="addVisitor"></span><span id="numberOfVisitors">1</span>
+                    <span class="glyphicon glyphicon-plus-sign" id="addVisitor" style="cursor: pointer"></span><span id="numberOfVisitors">1</span>
                     <span class="glyphicon glyphicon-minus-sign" id="deleteVisitor"></span>
                 </p>
 
-                {{ form_start(form) }}
-                
-
+                {{ form_start(form, {'attr' : {'class': 'form-horizontal'}}) }}
+                    <div class="form-group" style="float: right">
+                        {{ form_widget(form.duree) }}
+                        {{ form_errors(form.duree) }}
+                    </div>
+                {{ form_errors(form) }}
+                {{ form_widget(form.date, {'attr': {'class': 'form-control'}}) }}
+                {{ form_row(form.visiteurs) }}
                 {{ form_end(form) }}
+
+                <div class="btn-submit">
+                    <input type="submit" value="Acheter vos billets" class="btn btn-primary btn-submit">
+                </div>
+
+
             </div>
         </div>
+
         <hr>
         <footer>
-            <p>The Sky's jjjjj</p>
+            <p>Musée du Louvre © Tous droits réservés</p>
         </footer>
     </div>
 
 
 
 
+{% endblock %}
     {% block javascripts %}
         {{ parent() }}
         <script src="{{ asset('js/calendrier.js') }}"></script>
         <script src="{{ asset('js/form.js') }}"></script>
     {% endblock %}
-{% endblock %}

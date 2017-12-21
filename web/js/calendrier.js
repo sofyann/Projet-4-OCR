@@ -119,6 +119,6 @@ $(document).ready(function () {
         var day = $(this).text();
         var formatedDate = year+'-'+month+'-'+day;
         console.log(formatedDate);
-        $('#theDate').val(formatedDate);
+        $('#app_bundle_commande_type_date').val(formatedDate);
     });
 });
