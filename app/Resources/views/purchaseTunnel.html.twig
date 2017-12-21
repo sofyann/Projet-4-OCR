@@ -28,13 +28,15 @@
           </thead>
           <tbody>
           {% for visiteur in visiteurs %}
+            <tr>
               <td>{{ loop.index }}</td>
               <td>{{ visiteur.prenom }}</td>
               <td>{{ visiteur.nom }}</td>
               <td>{{ visiteur.date_de_naissance|date('m/d/Y') }}</td>
               <td>{{ visiteur.pays }}</td>
               <td>{{ 'oui' }}</td>
-              <td>{{ prixParVisiteur }}</td>
+              <td>{{ prixParVisiteur[loop.index0] }}</td>
+            </tr>
           {% endfor %}
           </tbody>
       </table>

@@ -3,6 +3,8 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Form\CommandeType;
+use AppBundle\Service\CalculPrixParVisiteur;
+use DateTime;
 use function dump;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -40,9 +42,15 @@ class MainController extends Controller
                 $date = $data['date'];
                 $duree = $data['duree'];
                 $visiteurs = $data['visiteurs'];
-                $prixParVisiteur = 0;
                 $prixTotal = 0;
-                dump($visiteurs);
+                $calculateur = new CalculPrixParVisiteur();
+                $prixParVisiteur = $calculateur->calculPrixEnFonctionDeLAge($visiteurs);
+
+                dump($prixParVisiteur);
+
+
+
+
                 return $this->render('purchaseTunnel.html.twig', [
                     'date' => $date,
                     'duree' => $duree,
