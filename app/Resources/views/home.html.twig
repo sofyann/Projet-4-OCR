@@ -58,7 +58,7 @@
                     <span class="glyphicon glyphicon-minus-sign" id="deleteVisitor"></span>
                 </p>
 
-                {{ form_start(form, {'attr' : {'class': 'form-horizontal'}, 'action': path('purchase'), 'method' : 'POST'} ) }}
+                {{ form_start(form, {'attr' : {'class': 'form-horizontal'}} ) }}
                     <div class="form-group" style="float: right">
                         {{ form_widget(form.duree) }}
                         {{ form_errors(form.duree) }}

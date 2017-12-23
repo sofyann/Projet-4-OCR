@@ -10,6 +10,14 @@
                 <th>Date de la visite</th>
                 <td>{{ date|date('m/d/Y') }}</td>
             </tr>
+            <tr>
+                <th>Durée de la visite</th>
+                {% if duree == 'halfDay' %}
+                    <td>Demi-journée</td>
+                {% elseif duree == 'fullDay' %}
+                    <td>Journée entière</td>
+                {% endif %}
+            </tr>
         </table>
     </div>
 
@@ -35,7 +43,7 @@
               <td>{{ visiteur.date_de_naissance|date('m/d/Y') }}</td>
               <td>{{ visiteur.pays }}</td>
               <td>{{ 'oui' }}</td>
-              <td>{{ prixParVisiteur[loop.index0] }}</td>
+              <td>{{ visiteur.0}}€</td>
             </tr>
           {% endfor %}
           </tbody>
@@ -45,10 +53,11 @@
       <table class="table table-bordered table-striped">
           <tr>
               <th>Prix Total</th>
-              <td>10€</td>
+              <td>{{ prixTotal }}€</td>
           </tr>
       </table>
   </div>
+    <a class="btn btn-submit" href="{{ path('coordonnee') }}">Etape suivante</a>
 </div>
 
 {% endblock %}

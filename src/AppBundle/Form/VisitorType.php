@@ -49,7 +49,9 @@ class VisitorType extends AbstractType
                 'choices'=> ['Tarif reduit' =>'tarifReduit'],
                 'multiple' => false,
                 'expanded' => true,
-                'label' => false
+                'label' => false,
+                'required' => false,
+                'placeholder' => false
 
             ]);
     }

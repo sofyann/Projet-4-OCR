@@ -15,23 +15,44 @@ use function intval;
 use function sizeof;
 
 class CalculPrixParVisiteur {
+    private $prixTotal;
 
     public function calculPrixEnFonctionDeLAge($visiteurs = []){
         $aujourdhui = new DateTime();
-        $prix = [];
+
         for ($i = 0; $i < sizeof($visiteurs); $i++){
             $age = $aujourdhui->diff($visiteurs[$i]["date_de_naissance"])->format('%y');
             $age = intval($age);
+            $prix = 0;
             if ($age < 4){
-                array_push($prix,0);
+                $prix = 0;
             } elseif ($age < 12){
-                array_push($prix,8);
+                $prix = 8;
             } elseif ($age >= 12 && $age < 60){
-                array_push($prix,16);
+                $prix = 16;
             } elseif ($age >= 60){
-                array_push($prix,12);
+                $prix = 12;
             }
+
+            if ($visiteurs[$i]['tarif_reduit'] == 'tarifReduit'){
+                $prix -= 10;
+                if ($prix < 0){
+                    $prix = 0;
+                }
+            }
+            $this->prixTotal += $prix;
+            array_push($visiteurs[$i], $prix);
         }
-        return $prix;
+        return $visiteurs;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getPrixTotal()
+    {
+        return $this->prixTotal;
+    }
+
+
 }
