@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+{% block javascripts %}
+{{ parent() }}
+    <script src="https://js.stripe.com/v3/"></script>
+    <script type="text/javascript" src="{{ asset('js/stripe.js') }}"></script>
+{% endblock %}
+{% block body %}
+
+    <div class="container">
+
+        <form action="" method="post" id="payment-form">
+
+            <div class="row">
+                <div class="col-xs-4 col-sm-3 col-sm-offset-2 form-group">
+                    <div class="input-group">
+                <span class="input-group-addon">
+                     <i class="glyphicon glyphicon-user"></i>
+                 </span>
+                        <input data-stripe="name" class="form-control" type="text" autocomplete="off" id="card-name" required placeholder="Titulaire de la carte"/>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-3 form-group">
+                    <div class="input-group">
+                <span class="input-group-addon">
+                     <i class="glyphicon glyphicon-credit-card"></i>
+                 </span>
+                        <div id="cardNumber-element" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-xs-4 col-sm-3 col-sm-offset-2 form-group">
+                    <div class="input-group">
+                <span class="input-group-addon">
+                     <i class="glyphicon glyphicon-calendar"></i>
+                 </span>
+                        <div id="cardExpiry-element" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-4 col-sm-3 form-group">
+                    <div class="input-group">
+                <span class="input-group-addon">
+                     <i class="glyphicon glyphicon-lock"></i>
+                 </span>
+                        <div id="cardCvc-element" class="form-control">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-8 col-sm-6 col-sm-offset-2 text-center">
+                    <div id="card-errors" role="alert" style="height: 20px"></div>
+                </div>
+            </div>
+
+
+
+            <div class="row">
+                <div class="col-xs-8 col-sm-6 col-sm-offset-2 text-center">
+                    <button type="submit" class="js-submit-button btn btn-lg btn-danger">
+                        Paiement
+                    </button>
+                </div>
+            </div>
+        </form>
+
+
+
+    </div>
+
+{% endblock %}

@@ -110,8 +110,31 @@ class MainController extends Controller
     /**
      * @Route("/purchase/step3", name="paiement")
      */
-    public function purchaseStep3Action(){
+    public function purchaseStep3Action(Request $request){
 
-        return $this->render('paiement.html.twig');
+        $session = $request->getSession();
+        $prixTotal = $session->get('prixTotal');
+
+        if($request->isMethod('POST')){
+            $token = $request->get('stripeToken');
+            \Stripe\Stripe::setApiKey($this->getParameter('stripe_secret_key'));
+
+            \Stripe\Charge::create(array(
+                "amount" => $prixTotal * 100,
+                "currency" => "eur",
+                "source" => $token, // obtained with Stripe.js
+                "description" => "first test charge"
+            ));
+
+            $this->addFlash('success', 'Order Complete ! Yay !');
+
+
+        }
+
+
+        return $this->render('paiement.html.twig', [
+            'prixTotal' => $prixTotal,
+            'stripe_public_key' => $this->getParameter('stripe_public_key')
+        ]);
     }
 }
