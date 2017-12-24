@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cc3d9532-5f13-492d-9d2c-e232b2ea515a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/stripe.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/app/Resources/views/confirmation.html.twig" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Resources/views/paiement.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/paiement.html.twig" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/config/parameters.yml.dist" afterPath="$PROJECT_DIR$/app/config/parameters.yml.dist" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/symfony_requirements" afterPath="$PROJECT_DIR$/bin/symfony_requirements" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.json" afterPath="$PROJECT_DIR$/composer.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/composer.lock" afterPath="$PROJECT_DIR$/composer.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/AppBundle/Controller/MainController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/MainController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/config.php" afterPath="$PROJECT_DIR$/web/config.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,18 +15,29 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainController.php" pinned="false" current-in-tab="false">
+      <file leaf-file-name="MainController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/MainController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="123" column="34" lean-forward="false" selection-start-line="123" selection-start-column="34" selection-end-line="123" selection-end-column="34" />
+            <state relative-caret-position="877">
+              <caret line="125" column="37" lean-forward="false" selection-start-line="125" selection-start-column="37" selection-end-line="125" selection-end-column="37" />
               <folding>
                 <element signature="e#40#72#0#PHP" expanded="true" />
-                <element signature="e#1458#1474#0#PHP" expanded="true" />
-                <element signature="e#1919#1945#0#PHP" expanded="true" />
-                <element signature="e#3197#3219#0#PHP" expanded="true" />
-                <element signature="e#4048#4068#0#PHP" expanded="true" />
+                <element signature="e#1499#1515#0#PHP" expanded="true" />
+                <element signature="e#2164#2190#0#PHP" expanded="true" />
+                <element signature="e#3675#3697#0#PHP" expanded="true" />
+                <element signature="e#4714#4734#0#PHP" expanded="true" />
+                <element signature="e#4974#4998#1#PHP" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="confirmation.html.twig" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Resources/views/confirmation.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -80,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="stripe.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="stripe.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/web/js/stripe.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="53" lean-forward="false" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
+            <state relative-caret-position="144">
+              <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -127,9 +132,9 @@
         <option value="$PROJECT_DIR$/app/Resources/views/coordonnee.html.twig" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml" />
         <option value="$PROJECT_DIR$/app/config/parameters.yml.dist" />
-        <option value="$PROJECT_DIR$/src/AppBundle/Controller/MainController.php" />
         <option value="$PROJECT_DIR$/app/Resources/views/paiement.html.twig" />
         <option value="$PROJECT_DIR$/web/js/stripe.js" />
+        <option value="$PROJECT_DIR$/src/AppBundle/Controller/MainController.php" />
       </list>
     </option>
   </component>
@@ -302,12 +307,12 @@
       <workItem from="1513873900006" duration="3585000" />
       <workItem from="1513955472836" duration="4852000" />
       <workItem from="1514043097262" duration="4822000" />
-      <workItem from="1514072853927" duration="15049000" />
+      <workItem from="1514072853927" duration="18135000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="71237000" />
+    <option name="totallyTimeSpent" value="74323000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1912" y="-8" width="1936" height="1056" extended-state="6" />
@@ -343,21 +348,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Form/VisitorType.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="39" column="42" lean-forward="false" selection-start-line="39" selection-start-column="42" selection-end-line="39" selection-end-column="42" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/js/form.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="414">
-          <caret line="23" column="89" lean-forward="false" selection-start-line="23" selection-start-column="89" selection-end-line="23" selection-end-column="89" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/css/styles.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="738">
@@ -406,10 +396,11 @@
           <caret line="21" column="40" lean-forward="false" selection-start-line="21" selection-start-column="40" selection-end-line="21" selection-end-column="40" />
           <folding>
             <element signature="e#40#72#0#PHP" expanded="true" />
-            <element signature="e#1458#1474#0#PHP" expanded="true" />
-            <element signature="e#1919#1945#0#PHP" expanded="true" />
-            <element signature="e#3197#3219#0#PHP" expanded="true" />
-            <element signature="e#4048#4068#0#PHP" expanded="true" />
+            <element signature="e#1499#1515#0#PHP" expanded="true" />
+            <element signature="e#2164#2190#0#PHP" expanded="true" />
+            <element signature="e#3675#3697#0#PHP" expanded="true" />
+            <element signature="e#4714#4734#0#PHP" expanded="true" />
+            <element signature="e#4974#4998#1#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -545,10 +536,11 @@
           <caret line="8" column="39" lean-forward="false" selection-start-line="8" selection-start-column="39" selection-end-line="8" selection-end-column="39" />
           <folding>
             <element signature="e#40#72#0#PHP" expanded="true" />
-            <element signature="e#1458#1474#0#PHP" expanded="true" />
-            <element signature="e#1919#1945#0#PHP" expanded="true" />
-            <element signature="e#3197#3219#0#PHP" expanded="true" />
-            <element signature="e#4048#4068#0#PHP" expanded="true" />
+            <element signature="e#1499#1515#0#PHP" expanded="true" />
+            <element signature="e#2164#2190#0#PHP" expanded="true" />
+            <element signature="e#3675#3697#0#PHP" expanded="true" />
+            <element signature="e#4714#4734#0#PHP" expanded="true" />
+            <element signature="e#4974#4998#1#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -581,10 +573,11 @@
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#40#72#0#PHP" expanded="true" />
-            <element signature="e#1458#1474#0#PHP" expanded="true" />
-            <element signature="e#1919#1945#0#PHP" expanded="true" />
-            <element signature="e#3197#3219#0#PHP" expanded="true" />
-            <element signature="e#4048#4068#0#PHP" expanded="true" />
+            <element signature="e#1499#1515#0#PHP" expanded="true" />
+            <element signature="e#2164#2190#0#PHP" expanded="true" />
+            <element signature="e#3675#3697#0#PHP" expanded="true" />
+            <element signature="e#4714#4734#0#PHP" expanded="true" />
+            <element signature="e#4974#4998#1#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -742,20 +735,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/MainController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="123" column="34" lean-forward="false" selection-start-line="123" selection-start-column="34" selection-end-line="123" selection-end-column="34" />
-          <folding>
-            <element signature="e#40#72#0#PHP" expanded="true" />
-            <element signature="e#1458#1474#0#PHP" expanded="true" />
-            <element signature="e#1919#1945#0#PHP" expanded="true" />
-            <element signature="e#3197#3219#0#PHP" expanded="true" />
-            <element signature="e#4048#4068#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Resources/views/paiement.html.twig">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -769,9 +748,40 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/web/js/stripe.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="53" lean-forward="false" selection-start-line="0" selection-start-column="53" selection-end-line="0" selection-end-column="53" />
+        <state relative-caret-position="144">
+          <caret line="8" column="5" lean-forward="false" selection-start-line="8" selection-start-column="5" selection-end-line="8" selection-end-column="5" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Resources/views/confirmation.html.twig">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/stripe/stripe-php/lib/Charge.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1823">
+          <caret line="40" column="6" lean-forward="false" selection-start-line="40" selection-start-column="6" selection-end-line="40" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/MainController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="877">
+          <caret line="125" column="37" lean-forward="false" selection-start-line="125" selection-start-column="37" selection-end-line="125" selection-end-column="37" />
+          <folding>
+            <element signature="e#40#72#0#PHP" expanded="true" />
+            <element signature="e#1499#1515#0#PHP" expanded="true" />
+            <element signature="e#2164#2190#0#PHP" expanded="true" />
+            <element signature="e#3675#3697#0#PHP" expanded="true" />
+            <element signature="e#4714#4734#0#PHP" expanded="true" />
+            <element signature="e#4974#4998#1#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

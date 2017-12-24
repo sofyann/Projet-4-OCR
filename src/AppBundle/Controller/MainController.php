@@ -40,7 +40,7 @@ class MainController extends Controller
                 $session->set('duree', $data['duree']);
                 $session->set('visiteurs', $visiteurs);
                 $session->set('prixTotal', $prixTotal);
-
+                $session->set('step', 1);
                 return $this->redirectToRoute('purchase');
             }
         }
@@ -56,55 +56,63 @@ class MainController extends Controller
      */
     public function purchaseAction(Request $request){
         $session = $request->getSession();
-        $date = $session->get('date');
-        $duree = $session->get('duree');
-        $visiteurs =$session->get('visiteurs');
-        $prixTotal = $session->get('prixTotal');
+        if ($session->get('step') != 1){
+            $session->set('step', 0);
+            return $this->redirectToRoute('main');
+        } else {
+            $date = $session->get('date');
+            $duree = $session->get('duree');
+            $visiteurs =$session->get('visiteurs');
+            $prixTotal = $session->get('prixTotal');
+            $session->set('step', 2);
 
-
-        return $this->render('purchaseTunnel.html.twig',[
-            'date' => $date,
-            'duree' => $duree,
-            'visiteurs' => $visiteurs,
-            'prixTotal' => $prixTotal
+            return $this->render('purchaseTunnel.html.twig',[
+                'date' => $date,
+                'duree' => $duree,
+                'visiteurs' => $visiteurs,
+                'prixTotal' => $prixTotal
             ]);
+        }
     }
 
     /**
      * @Route("/purchase/step2", name="coordonnee")
      */
     public function purchaseStep2Action(Request $request){
+        $session = $request->getSession();
+        if ($session->get('step') != 2){
+            $session->set('step', 0);
+            return $this->redirectToRoute('main');
+        } else {
+            $form = $this->createForm(Coordonnee::class);
+            if ($request->isMethod('POST')){
+                $form->handleRequest($request);
+                if ($form->isSubmitted() && $form->isValid()){
+                    $data = $form->getData();
 
-        $form = $this->createForm(Coordonnee::class);
-        if ($request->isMethod('POST')){
-            $form->handleRequest($request);
-            if ($form->isSubmitted() && $form->isValid()){
-                $data = $form->getData();
+                    $commanditaire = [
+                        'prenom' => $data['prenom'],
+                        'nom' => $data['nom'],
+                        'mail' => $data['mail'],
+                        'num' => $data['num'],
+                        'adresse' => $data['adresse'],
+                        'codePostal' => $data['codePostal'],
+                        'ville' => $data['ville'],
+                        'pays' => $data['pays'],
+                    ];
 
-                $commanditaire = [
-                    'prenom' => $data['prenom'],
-                    'nom' => $data['nom'],
-                    'mail' => $data['mail'],
-                    'num' => $data['num'],
-                    'adresse' => $data['adresse'],
-                    'codePostal' => $data['codePostal'],
-                    'ville' => $data['ville'],
-                    'pays' => $data['pays'],
-                ];
 
-                $session = $request->getSession();
-                $session->set('commanditaire', $commanditaire);
-
-                dump($session->get('commanditaire'));
-
-                return $this->redirectToRoute('paiement');
+                    $session->set('commanditaire', $commanditaire);
+                    $session->set('step', 3);
+                    return $this->redirectToRoute('paiement');
+                }
             }
+            return $this->render('coordonnee.html.twig', [
+                'coordForm' => $form->createView()
+            ]);
         }
 
 
-        return $this->render('coordonnee.html.twig', [
-            'coordForm' => $form->createView()
-        ]);
     }
 
     /**
@@ -113,28 +121,40 @@ class MainController extends Controller
     public function purchaseStep3Action(Request $request){
 
         $session = $request->getSession();
-        $prixTotal = $session->get('prixTotal');
 
-        if($request->isMethod('POST')){
-            $token = $request->get('stripeToken');
-            \Stripe\Stripe::setApiKey($this->getParameter('stripe_secret_key'));
+        if ($session->get('step') != 3){
+            $session->set('step', 0);
+            return $this->redirectToRoute('main');
+        } else {
+            $prixTotal = $session->get('prixTotal');
 
-            \Stripe\Charge::create(array(
-                "amount" => $prixTotal * 100,
-                "currency" => "eur",
-                "source" => $token, // obtained with Stripe.js
-                "description" => "first test charge"
-            ));
+            if($request->isMethod('POST')){
+                $token = $request->get('stripeToken');
+                \Stripe\Stripe::setApiKey($this->getParameter('stripe_secret_key'));
 
-            $this->addFlash('success', 'Order Complete ! Yay !');
+                \Stripe\Charge::create(array(
+                    "amount" => $prixTotal * 100,
+                    "currency" => "eur",
+                    "source" => $token, // obtained with Stripe.js
+                    "description" => "first test charge"
+                ));
+                $session->set('step', 4);
+            }
 
-
+            return $this->render('paiement.html.twig', [
+                'prixTotal' => $prixTotal
+            ]);
         }
 
-
-        return $this->render('paiement.html.twig', [
-            'prixTotal' => $prixTotal,
-            'stripe_public_key' => $this->getParameter('stripe_public_key')
-        ]);
     }
+
+    /**
+     * @Route("/purchase/step4", name="confirmation")
+     */
+    public function purchaseStep4Action(Request $request){
+
+
+        return $this->render('confirmation.html.twig');
+    }
+
 }
