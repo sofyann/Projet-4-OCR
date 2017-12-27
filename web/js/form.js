@@ -23,10 +23,31 @@ $(document).ready(function () {
         $('div#app_bundle_commande_type_visiteurs > div > label').css('float', 'left');
         $('div#app_bundle_commande_type_visiteurs > div > label').addClass('control-label');
         index++;
+        changeNumberOfVisitorsValue();
+    }
+
+    function deleteVisitor(){
+        var nb_row = $('.rowVisitor').length;
+        if(nb_row !== 1){
+            index--;
+            $('.rowVisitor:last').remove();
+        }
+        changeNumberOfVisitorsValue();
+    }
+
+    function changeNumberOfVisitorsValue(){
+        $('#numberOfVisitors').text(index);
     }
 
     $("#addVisitor").click(function(e){
         addVisitor();
+        e.preventDefault();
+
+        return false;
+    });
+
+    $("#deleteVisitor").click(function(e){
+        deleteVisitor();
         e.preventDefault();
         return false;
     });

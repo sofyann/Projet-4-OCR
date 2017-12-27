@@ -115,8 +115,14 @@ $(document).ready(function () {
         calendarGenerate(year, month);
     });
 
-    $(".clickable").click(function () {
+    $("#calendar").on("click", ".clickable",function () {
         var day = $(this).text();
+        if (day < 10){
+            day = '0'+day;
+        }
+        if (month < 10){
+            month = '0'+ month;
+        }
         var formatedDate = year+'-'+month+'-'+day;
         console.log(formatedDate);
         $('#app_bundle_commande_type_date').val(formatedDate);
