@@ -8,6 +8,8 @@ use AppBundle\Service\CalculPrixParVisiteur;
 use DateTime;
 use function dump;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Swift_Mailer;
+use Swift_Message;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -118,7 +120,7 @@ class MainController extends Controller
     /**
      * @Route("/purchase/step3", name="paiement")
      */
-    public function purchaseStep3Action(Request $request){
+    public function purchaseStep3Action(Request $request, Swift_Mailer $mailer){
 
         $session = $request->getSession();
 
@@ -127,22 +129,48 @@ class MainController extends Controller
             return $this->redirectToRoute('main');
         } else {
             $prixTotal = $session->get('prixTotal');
-
+            $error = false;
             if($request->isMethod('POST')){
                 $token = $request->get('stripeToken');
-                \Stripe\Stripe::setApiKey($this->getParameter('stripe_secret_key'));
+                try{
+                    \Stripe\Stripe::setApiKey($this->getParameter('stripe_secret_key'));
 
-                \Stripe\Charge::create(array(
-                    "amount" => $prixTotal * 100,
-                    "currency" => "eur",
-                    "source" => $token, // obtained with Stripe.js
-                    "description" => "first test charge"
-                ));
-                $session->set('step', 4);
+                    \Stripe\Charge::create(array(
+                        "amount" => $prixTotal * 100,
+                        "currency" => "eur",
+                        "source" => $token, // obtained with Stripe.js
+                        "description" => "first test charge"
+                    ));
+                }catch (\Stripe\Error\Card $e){
+                    $error = 'Un problème est survenue : votre carte a été refusée.';
+                }
+
+                if (!$error){
+                    $date = $session->get('date');
+                    $duree = $session->get('duree');
+                    $visiteurs =$session->get('visiteurs');
+                    $email = $session->get('commanditaire');
+                    $email = $email['mail'];
+
+                    $message = (new Swift_Message('Hello email'))
+                        ->setFrom('Musee-du-Louvre@exemple.fr')
+                        ->setTo($email)
+                        ->setBody($this->renderView('email.html.twig',[
+                            'date' => $date,
+                            'duree' => $duree,
+                            'visiteurs' => $visiteurs,
+                            'prixTotal' => $prixTotal
+                        ]), 'text/html');
+                     $mailer->send($message);
+                    $session->set('step', 4);
+                    return $this->redirectToRoute('confirmation');
+                }
+
+
             }
-
             return $this->render('paiement.html.twig', [
-                'prixTotal' => $prixTotal
+                'prixTotal' => $prixTotal,
+                'error' => $error
             ]);
         }
 
