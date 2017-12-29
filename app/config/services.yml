@@ -33,3 +33,9 @@ services:
     # AppBundle\Service\ExampleService:
     #     arguments:
     #         $someArgument: 'some_value'
+    app.price:
+        class: AppBundle\Service\Price
+        public: true
+    app.purchase_data:
+        class: AppBundle\Service\PurchaseData
+        public: true

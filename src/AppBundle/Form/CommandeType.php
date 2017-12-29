@@ -24,7 +24,7 @@ class CommandeType extends AbstractType
                 'multiple' => false,
                 'expanded' => true
             ])
-            ->add('visiteurs', CollectionType::class, [
+            ->add('visitors', CollectionType::class, [
                 'entry_type' => VisitorType::class,
                  'allow_add' => true,
                  'allow_delete' => true,

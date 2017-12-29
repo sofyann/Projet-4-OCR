@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
 
-    var container = $('div#app_bundle_commande_type_visiteurs');
+    var container = $('div#app_bundle_commande_type_visitors');
     var index = 0;
 
     if(index ===0){
@@ -13,15 +13,15 @@ $(document).ready(function () {
             .replace(/__name__label__/g, 'Visiteur n°'+(index+1))
             .replace(/__name__/g, index);
         container.append(template);
-        var line = $('div#app_bundle_commande_type_visiteurs > div');
+        var line = $('div#app_bundle_commande_type_visitors > div');
         line.addClass('row');
         line.addClass('rowVisitor');
         line.css('text-align', 'center');
-        var line = $('div#app_bundle_commande_type_visiteurs > div > div > div');
+        var line = $('div#app_bundle_commande_type_visitors > div > div > div');
         line.addClass('col-md-2');
 
-        $('div#app_bundle_commande_type_visiteurs > div > label').css('float', 'left');
-        $('div#app_bundle_commande_type_visiteurs > div > label').addClass('control-label');
+        $('div#app_bundle_commande_type_visitors > div > label').css('float', 'left');
+        $('div#app_bundle_commande_type_visitors > div > label').addClass('control-label');
         index++;
         changeNumberOfVisitorsValue();
     }

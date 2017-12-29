@@ -4,9 +4,6 @@ namespace AppBundle\Controller;
 
 use AppBundle\Form\CommandeType;
 use AppBundle\Form\Coordonnee;
-use AppBundle\Service\CalculPrixParVisiteur;
-use DateTime;
-use function dump;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Swift_Mailer;
 use Swift_Message;
@@ -31,26 +28,15 @@ class MainController extends Controller
             $form->handleRequest($request);
             if ($form->isSubmitted() && $form->isValid()){
                 $data = $form->getData();
-                $visiteurs = $data['visiteurs'];
-                $calculateur = new CalculPrixParVisiteur();
-                $visiteurs = $calculateur->calculPrixEnFonctionDeLAge($visiteurs);
-                $prixTotal = $calculateur->getPrixTotal();
-
-
-                $session = $request->getSession();
-                $session->set('date', $data['date']);
-                $session->set('duree', $data['duree']);
-                $session->set('visiteurs', $visiteurs);
-                $session->set('prixTotal', $prixTotal);
-                $session->set('step', 1);
+                $purchaseData = $this->get('app.purchase_data');
+                $purchaseData->setOrder($data);
+                $purchaseData->updateStep(1);
                 return $this->redirectToRoute('purchase');
             }
         }
-
             return $this->render('home.html.twig', [
                 'form' => $form->createView()
             ]);
-
     }
 
     /**
@@ -62,17 +48,14 @@ class MainController extends Controller
             $session->set('step', 0);
             return $this->redirectToRoute('main');
         } else {
-            $date = $session->get('date');
-            $duree = $session->get('duree');
-            $visiteurs =$session->get('visiteurs');
-            $prixTotal = $session->get('prixTotal');
-            $session->set('step', 2);
-
+            $purchaseData = $this->get('app.purchase_data');
+            $orderDetails = $purchaseData->getOrder();
+            $purchaseData->updateStep(2);
             return $this->render('purchaseTunnel.html.twig',[
-                'date' => $date,
-                'duree' => $duree,
-                'visiteurs' => $visiteurs,
-                'prixTotal' => $prixTotal
+                'date' => $orderDetails['date'],
+                'duree' => $orderDetails['duree'],
+                'visiteurs' => $orderDetails['visiteurs'],
+                'prixTotal' => $orderDetails['prixTotal']
             ]);
         }
     }
@@ -91,21 +74,9 @@ class MainController extends Controller
                 $form->handleRequest($request);
                 if ($form->isSubmitted() && $form->isValid()){
                     $data = $form->getData();
-
-                    $commanditaire = [
-                        'prenom' => $data['prenom'],
-                        'nom' => $data['nom'],
-                        'mail' => $data['mail'],
-                        'num' => $data['num'],
-                        'adresse' => $data['adresse'],
-                        'codePostal' => $data['codePostal'],
-                        'ville' => $data['ville'],
-                        'pays' => $data['pays'],
-                    ];
-
-
-                    $session->set('commanditaire', $commanditaire);
-                    $session->set('step', 3);
+                    $purchaseData = $this->get('app.purchase_data');
+                    $purchaseData->setBuyer($data);
+                    $purchaseData->updateStep(3);
                     return $this->redirectToRoute('paiement');
                 }
             }
@@ -138,8 +109,8 @@ class MainController extends Controller
                     \Stripe\Charge::create(array(
                         "amount" => $prixTotal * 100,
                         "currency" => "eur",
-                        "source" => $token, // obtained with Stripe.js
-                        "description" => "first test charge"
+                        "source" => $token,
+                        "description" => "Réservation musée du louvre"
                     ));
                 }catch (\Stripe\Error\Card $e){
                     $error = 'Un problème est survenue : votre carte a été refusée.';
@@ -179,10 +150,20 @@ class MainController extends Controller
     /**
      * @Route("/purchase/step4", name="confirmation")
      */
-    public function purchaseStep4Action(Request $request){
-
-
-        return $this->render('confirmation.html.twig');
+    public function purchaseStep4Action(Request $request)
+    {
+        $session = $request->getSession();
+        if ($session->get('step') != 4) {
+            $session->set('step', 0);
+            return $this->redirectToRoute('main');
+        } else {
+            $email = $session->get('commanditaire');
+            $email = $email['mail'];
+            $purchaseData = $this->get('app.purchase_data');
+            $purchaseData->clearData();
+            return $this->render('confirmation.html.twig', [
+                'mail' => $email
+            ]);
+        }
     }
-
 }
