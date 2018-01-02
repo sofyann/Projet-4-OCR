@@ -22,13 +22,13 @@ class CommandeType extends AbstractType
             ->add('duree', ChoiceType::class, [
                 'choices'=> ['Demi-journée' =>'halfDay', 'Journée entière' =>'fullDay'],
                 'multiple' => false,
-                'expanded' => true
+                'expanded' => true,
             ])
             ->add('visitors', CollectionType::class, [
                 'entry_type' => VisitorType::class,
                  'allow_add' => true,
                  'allow_delete' => true,
-                'label' => false
+                'label' => false,
             ]);
 
 

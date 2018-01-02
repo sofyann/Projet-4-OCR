@@ -39,6 +39,9 @@ class Price {
                 if ($price < 0){
                     $price = 0;
                 }
+                $visitors[$i]['tarif_reduit'] = true;
+            } else {
+                $visitors[$i]['tarif_reduit'] = false;
             }
             $this->totalPrice += $price;
             array_push($visitors[$i], $price);

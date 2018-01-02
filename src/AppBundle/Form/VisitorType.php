@@ -41,17 +41,17 @@ class VisitorType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Date de naissance',
-                    'class' => 'form-control col-md-5'
+                    'class' => 'form-control'
 
                 ]
             ])
             ->add('tarif_reduit', ChoiceType::class,[
-                'choices'=> ['Tarif reduit' =>'tarifReduit'],
-                'multiple' => false,
+                'choices'=> ['Tarif réduit' =>'tarifReduit'],
+                'multiple' => true,
                 'expanded' => true,
                 'label' => false,
                 'required' => false,
-                'placeholder' => false
+                'placeholder' => false,
 
             ]);
     }

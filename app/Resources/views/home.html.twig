@@ -1,3 +1,29 @@
+{% import _self as visitorMacros %}
+
+{% macro printVisitorRow(visitorForm) %}
+    <div class="form-group rowVisitor">
+        {{ form_label(visitorForm, null, {'label_attr': {'class' : 'control-label label-visitor'}}) }}
+        <div class="col-md-2">
+            {{ form_widget(visitorForm.prenom) }}
+        </div>
+        <div class="col-md-2">
+            {{ form_widget(visitorForm.nom) }}
+        </div>
+        <div class="col-md-2">
+            {{ form_widget(visitorForm.pays) }}
+        </div>
+        <div class="col-md-2">
+            {{ form_widget(visitorForm.date_de_naissance) }}
+        </div>
+        <div class="col-md-2">
+            {{ form_label(visitorForm.tarif_reduit) }}
+            {{ form_widget(visitorForm.tarif_reduit, {'attr': {'class': 'checkbox-inline tarif-reduit'}}) }}
+        </div>
+    </div>
+
+{% endmacro %}
+
+
 {% extends 'base.html.twig' %}
     {% block title %}
         Musée du Louvre
@@ -50,39 +76,31 @@
                 </p>
             </div>
         </div>
-        <div class="row">
             <div id="form" class="well" style="background-color: #E9F3FF">
-                <p style="float: left">
+                <p id="nbVisitors">
                     Nombre de visiteurs :
-                    <span class="glyphicon glyphicon-plus-sign" id="addVisitor"></span><span id="numberOfVisitors">1</span>
+                    <span class="glyphicon glyphicon-plus-sign" id="addVisitor"></span>
+                    <span id="numberOfVisitors"> 1</span>
                     <span class="glyphicon glyphicon-minus-sign" id="deleteVisitor"></span>
                 </p>
 
                 {{ form_start(form, {'attr' : {'class': 'form-horizontal'}} ) }}
                     <div class="form-group" style="float: right">
-                        {{ form_widget(form.duree) }}
-                        {{ form_errors(form.duree) }}
+                        {{ form_widget(form.duree, {'attr' : {'class' : 'test'}}) }}
                     </div>
-                {{ form_errors(form) }}
                 {{ form_widget(form.date, {'attr': {'class': 'form-control hidden'}}) }}
-                {{ form_row(form.visitors) }}
+
+                <div class="js-visitor-wrapper" data-prototype="{{ visitorMacros.printVisitorRow(form.visitors.vars.prototype)|e('html_attr') }}">
+                </div>
+
+                {{ form_errors(form) }}
                 <div class="btn-submit">
                     <input type="submit" value="Acheter vos billets" class="btn btn-primary btn-submit">
                 </div>
                 {{ form_end(form) }}
-
-
-
             </div>
-        </div>
-
-
     </div>
-
-
-
-
-{% endblock %}
+{% endblock body %}
     {% block javascripts %}
         {{ parent() }}
         <script src="{{ asset('js/calendrier.js') }}"></script>

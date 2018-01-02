@@ -18,7 +18,6 @@ body{
     left: 50%;
     transform: translate(-50%, -50%);
     color: white;
-    top: 50%;
     background-color: black;
     padding: 50px;
     border-radius: 15px;
@@ -29,10 +28,13 @@ body{
 }
 
 .rowVisitor{
-    margin-top: 20px;
+    margin-top: 10px;
     background-color: #6AA4E9;
     padding: 5px;
     display: inline-block;
+    width: 100%;
+    margin-bottom: 5px;
+    margin-left: 0;
 }
 #form{
     margin-top: 30px;
@@ -45,4 +47,41 @@ body{
 
 #addVisitor, #deleteVisitor{
     cursor: pointer;
+}
+.well{
+    padding: 0;
+}
+
+.form-group, .form-horizontal {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+.label-visitor{
+    color: white;
+    font-weight: normal;
+    margin-left: 10px;
+    float: left;
+}
+#nbVisitors{
+    float: left;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.tarif-reduit{
+
+    color: white;
+    font-size: 15px;
+}
+
+.tarif-reduit label{
+    font-weight: normal !important;
+}
+
+.test label{
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 10px;
+    font-weight: normal !important;
+    font-size: 20px;
 }
