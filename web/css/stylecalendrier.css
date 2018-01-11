@@ -6,7 +6,7 @@ body{
 .currentDay{
   color: white;
 }
-#prev, #next{
+#next{
     cursor: pointer;
     font-size: 18px;
     padding: 5px;
@@ -25,11 +25,7 @@ h1, table{
     text-align: center;
     margin: 10px auto;
 }
-#prev{
-    float: left;
-    margin-top: 5px;
 
-}
 #next{
     float: right;
     margin-top: 5px;
@@ -42,8 +38,9 @@ table{
     border-spacing: 3px 5px;
     font-size: 16px;
 }
-h1{
+#monthAndYear{
     margin-top: 15px;
+    margin-left: 20px;
 }
 
 .clickable{
@@ -52,4 +49,10 @@ h1{
 
 .notClickable{
     color: #A2C2DB;
+}
+
+.daySelected{
+    background-color: #2b669a;
+    border-radius: 100%;
+    color: white;
 }

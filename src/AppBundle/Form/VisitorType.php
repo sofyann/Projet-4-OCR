@@ -41,7 +41,7 @@ class VisitorType extends AbstractType
                 'label' => false,
                 'attr' => [
                     'placeholder' => 'Date de naissance',
-                    'class' => 'form-control'
+                    'class' => 'form-control date_de_naissance'
 
                 ]
             ])

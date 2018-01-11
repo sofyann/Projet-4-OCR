@@ -5,7 +5,10 @@ var style = {
     base: {
         // Add your base input styles here. For example:
         fontSize: '16px',
-        color: "#32325d"
+        color: "#272727",
+        '::placeholder': {
+            color: "#999999"
+        }
     }
 };
 

@@ -1,5 +1,5 @@
 $(document).ready(function () {
-
+    var daySelected;
 
     function calendarGenerate(year,  month) {
         var months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
@@ -89,22 +89,13 @@ $(document).ready(function () {
         } else {
             clickable = true;
         }
-        var date = new Date(year, month, day,14,0);
-        var date2 = new Date(currentDate.getFullYear(), currentDate.getMonth()+1, currentDate.getDate());
+        var date = new Date(year, month, day);
+        var date2 = new Date(currentDate.getFullYear(), currentDate.getMonth()+1, currentDate.getDate(), 14, 0);
         if (date.getTime() < date2.getTime()){
             clickable = false;
         }
         return clickable;
     }
-
-    $("#prev").click(function () {
-        month--;
-        if (month < 1){
-            year--;
-            month = 12;
-        }
-        calendarGenerate(year, month);
-    });
 
     $("#next").click(function () {
         month++;
@@ -117,6 +108,8 @@ $(document).ready(function () {
 
     $("#calendar").on("click", ".clickable",function () {
         var day = $(this).text();
+        daySelected = day;
+        selectionDay(day, month, year);
         if (day < 10){
             day = '0'+day;
         }
@@ -124,7 +117,15 @@ $(document).ready(function () {
             month = '0'+ month;
         }
         var formatedDate = year+'-'+month+'-'+day;
-        console.log(formatedDate);
+
         $('#app_bundle_commande_type_date').val(formatedDate);
     });
+
+    function selectionDay(day) {
+        console.log(daySelected);
+        $('.daySelected').removeClass('daySelected');
+
+        $('#'+day).addClass('daySelected');
+
+    }
 });

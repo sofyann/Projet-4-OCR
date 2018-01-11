@@ -3,6 +3,27 @@
 
 {% block body %}
     <div class="container">
+        <div class="checkout-steps">
+            <div class="row">
+
+                <div class="col-md-3 step-checkout ">
+                    <span class="step-title">Détails de la commande</span>
+                </div>
+                <div class="col-md-3 step-checkout current-step">
+                    <span class="step-title">Vos coordoonées</span>
+                </div>
+                <div class="col-md-3 step-checkout">
+                    <span class="step-title">Paiement</span>
+                </div>
+                <div class="col-md-3 step-checkout">
+                    <span class="step-title">Confirmation</span>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="page-header">Vos coordoonées</h1>
+
+
         {{ form_start(coordForm) }}
         <div class="col-md-6">
             {{ form_label(coordForm.prenom, "Prénom") }}
