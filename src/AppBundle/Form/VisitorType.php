@@ -4,6 +4,7 @@ namespace AppBundle\Form;
 
 
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -45,14 +46,9 @@ class VisitorType extends AbstractType
 
                 ]
             ])
-            ->add('tarif_reduit', ChoiceType::class,[
-                'choices'=> ['Tarif réduit' =>'tarifReduit'],
-                'multiple' => true,
-                'expanded' => true,
-                'label' => false,
-                'required' => false,
-                'placeholder' => false,
-
+            ->add('tarif_reduit', CheckboxType::class,[
+                'label' => 'Tarif réduit',
+                'required' => false
             ]);
     }
 

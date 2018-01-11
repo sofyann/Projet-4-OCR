@@ -1,5 +1,6 @@
 $(document).ready(function () {
     var daySelected;
+    var currentDate = new Date();
 
     function calendarGenerate(year,  month) {
         var months = ['Janvier', 'Février', 'Mars', 'Avril', 'Mai', 'Juin', 'Juillet', 'Août', 'Septembre', 'Octobre', 'Novembre', 'Décembre'];
@@ -7,7 +8,7 @@ $(document).ready(function () {
 
         var numberOfDaysInMonth = daysInMonth(month, year);
         var calendrierHTML;
-        var currentDate = new Date();
+
         var currentYear = currentDate.getFullYear();
         var currentMonth = currentDate.getMonth()+1;
         var currentDay = currentDate.getDate();
@@ -90,7 +91,7 @@ $(document).ready(function () {
             clickable = true;
         }
         var date = new Date(year, month, day);
-        var date2 = new Date(currentDate.getFullYear(), currentDate.getMonth()+1, currentDate.getDate(), 14, 0);
+        var date2 = new Date(currentDate.getFullYear(), currentDate.getMonth()+1, currentDate.getDate());
         if (date.getTime() < date2.getTime()){
             clickable = false;
         }
@@ -113,11 +114,16 @@ $(document).ready(function () {
         if (day < 10){
             day = '0'+day;
         }
+        var monthStr;
         if (month < 10){
-            month = '0'+ month;
+                monthStr = '0'+ month;
         }
-        var formatedDate = year+'-'+month+'-'+day;
-
+        var formatedDate = year+'-'+monthStr+'-'+day;
+        if (new Date(formatedDate).getDate() === currentDate.getDate()){
+            is14hpassed(currentDate.getHours());
+        } else {
+            $('#app_bundle_commande_type_duree_1').prop('disabled', false);
+        }
         $('#app_bundle_commande_type_date').val(formatedDate);
     });
 
@@ -126,6 +132,12 @@ $(document).ready(function () {
         $('.daySelected').removeClass('daySelected');
 
         $('#'+day).addClass('daySelected');
+    }
 
+    function is14hpassed(hours){
+        if (hours > 14){
+            $('#app_bundle_commande_type_duree_1').prop('disabled', true);
+            $('#app_bundle_commande_type_duree_0').prop('checked', true);
+        }
     }
 });

@@ -11,6 +11,7 @@ namespace AppBundle\Service;
 
 use function array_push;
 use DateTime;
+use function dump;
 use function intval;
 use function sizeof;
 
@@ -33,15 +34,11 @@ class Price {
             } elseif ($age >= 60){
                 $price = 12;
             }
-
-            if ($visitors[$i]['tarif_reduit'] == 'tarifReduit'){
+            if ($visitors[$i]['tarif_reduit'] == true){
                 $price -= 10;
                 if ($price < 0){
                     $price = 0;
                 }
-                $visitors[$i]['tarif_reduit'] = true;
-            } else {
-                $visitors[$i]['tarif_reduit'] = false;
             }
             $this->totalPrice += $price;
             array_push($visitors[$i], $price);

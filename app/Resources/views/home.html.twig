@@ -15,9 +15,9 @@
         <div class="col-md-2">
             {{ form_widget(visitorForm.date_de_naissance) }}
         </div>
-        <div class="col-md-2">
+        <div class="col-md-2 checkbox-inline tarif-reduit">
+            {{ form_widget(visitorForm.tarif_reduit) }}
             {{ form_label(visitorForm.tarif_reduit) }}
-            {{ form_widget(visitorForm.tarif_reduit, {'attr': {'class': 'checkbox-inline tarif-reduit'}}) }}
         </div>
     </div>
 
