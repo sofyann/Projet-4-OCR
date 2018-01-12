@@ -53,7 +53,7 @@ class Billet
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Commande", inversedBy="billets")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $commandeId;
+    private $commande;
 
 
     /**
@@ -163,27 +163,21 @@ class Billet
     }
 
     /**
-     * Set commandeId
-     *
-     * @param integer $commandeId
-     *
-     * @return Billet
+     * @return mixed
      */
-    public function setCommandeId($commandeId)
+    public function getCommande()
     {
-        $this->commandeId = $commandeId;
-
-        return $this;
+        return $this->commande;
     }
 
     /**
-     * Get commandeId
-     *
-     * @return int
+     * @param mixed $commande
      */
-    public function getCommandeId()
+    public function setCommande($commande)
     {
-        return $this->commandeId;
+        $this->commande = $commande;
     }
+
+
 }
 

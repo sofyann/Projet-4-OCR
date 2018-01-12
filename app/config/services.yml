@@ -39,3 +39,6 @@ services:
     app.purchase_data:
         class: AppBundle\Service\PurchaseData
         public: true
+    app.bdd_order:
+        class: AppBundle\Service\BddOrder
+        public: true

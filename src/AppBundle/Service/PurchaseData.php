@@ -62,6 +62,10 @@ class PurchaseData
         $this->session->set('commanditaire', $commanditaire);
     }
 
+    public function getBuyer(){
+      return $this->session->get('commanditaire');
+    }
+
     public function clearData(){
         $this->session->set('date', '');
         $this->session->set('duree', '');

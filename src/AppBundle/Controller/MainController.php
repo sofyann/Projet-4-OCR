@@ -159,10 +159,14 @@ class MainController extends Controller
         } else {
             $email = $session->get('commanditaire');
             $email = $email['mail'];
+            $db = $this->get('app.bdd_order');
+            $db->saveData();
+            $reservationCode = $db->getReservationCode();
             $purchaseData = $this->get('app.purchase_data');
             $purchaseData->clearData();
             return $this->render('confirmation.html.twig', [
-                'mail' => $email
+                'mail' => $email,
+                'reservationCode' => $reservationCode
             ]);
         }
     }

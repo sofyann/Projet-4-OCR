@@ -10,4 +10,11 @@ namespace AppBundle\Repository;
  */
 class CommandeRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findLastOne(){
+        return $this->createQueryBuilder('commande')
+            ->orderBy('commande.id', 'DESC')
+            ->setMaxResults(1)
+            ->getQuery()
+            ->execute();
+    }
 }

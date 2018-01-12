@@ -79,6 +79,12 @@ class Commanditaire
 
 
     /**
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Commande", mappedBy="commanditaire")
+     */
+    private $commandes;
+
+
+    /**
      * Get id
      *
      * @return int

@@ -44,9 +44,9 @@ class Commande
     private $prixTotal;
 
     /**
-     * @ORM\OneToOne(targetEntity="AppBundle\Entity\Commanditaire", mappedBy="id")
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Commanditaire", inversedBy="commandes")
      */
-    private $commanditaireId;
+    private $commanditaire;
 
     /**
      * @var string
@@ -56,15 +56,50 @@ class Commande
     private $codeReservation;
 
     /**
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Billet", mappedBy="commandeId")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\Billet", mappedBy="commande")
      * @ORM\JoinColumn(nullable=false)
      */
     private $billets;
+
+    /**
+     * @return mixed
+     */
+    public function getBillets()
+    {
+        return $this->billets;
+    }
+
+
+
 
     public function __construct()
     {
         $this->billets = new ArrayCollection();
     }
+
+    /**
+     * @ORM\Column(name="duree", type="string")
+     */
+    private $duree;
+
+    /**
+     * @return mixed
+     */
+    public function getDuree()
+    {
+        return $this->duree;
+    }
+
+    /**
+     * @param mixed $duree
+     */
+    public function setDuree($duree)
+    {
+        $this->duree = $duree;
+    }
+
+
+
 
     /**
      * Get id
@@ -149,28 +184,22 @@ class Commande
     }
 
     /**
-     * Set commanditaireId
-     *
-     * @param integer $commanditaireId
-     *
-     * @return Commande
+     * @return mixed
      */
-    public function setCommanditaireId($commanditaireId)
+    public function getCommanditaire()
     {
-        $this->commanditaireId = $commanditaireId;
-
-        return $this;
+        return $this->commanditaire;
     }
 
     /**
-     * Get commanditaireId
-     *
-     * @return int
+     * @param mixed $commanditaire
      */
-    public function getCommanditaireId()
+    public function setCommanditaire($commanditaire)
     {
-        return $this->commanditaireId;
+        $this->commanditaire = $commanditaire;
     }
+
+
 
     /**
      * Set codeReservation
