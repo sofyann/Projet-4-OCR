@@ -32,7 +32,7 @@ class Commande
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="date_de_visite", type="date")
+     * @ORM\Column(name="date_de_visite", type="datetime")
      */
     private $dateDeVisite;
 

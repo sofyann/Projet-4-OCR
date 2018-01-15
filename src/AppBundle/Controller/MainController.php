@@ -4,10 +4,17 @@ namespace AppBundle\Controller;
 
 use AppBundle\Form\CommandeType;
 use AppBundle\Form\Coordonnee;
+use function cal_days_in_month;
+use const CAL_GREGORIAN;
+use function count;
+use DateTime;
+use function dump;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Swift_Mailer;
 use Swift_Message;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 /**
@@ -169,5 +176,37 @@ class MainController extends Controller
                 'reservationCode' => $reservationCode
             ]);
         }
+    }
+
+
+    /**
+     * @Route("/calendar/{year}/{month}",
+     *     name="calendarDates",
+     *     requirements={"year" = "\d{4}", "month" = "\d{2}"}
+     *     )
+     * @Method("GET")
+     */
+    public function getDatesAction($year, $month){
+        $days = [];
+        $em = $this->getDoctrine()->getManager();
+        $numberDayInMonth = cal_days_in_month(CAL_GREGORIAN, $month, $year);
+        for ($i = 1; $i <= $numberDayInMonth; $i++){
+            $billetsForthisDay = 0;
+            $date = new DateTime($year.'-'.$month.'-'.$i);
+            $dates = $em->getRepository('AppBundle:Commande')->findByDate($date);
+            if (!empty($dates)){
+                foreach ($dates as $commandes){
+                   $billets = $commandes->getBillets();
+                   $billetsForthisDay += count($billets);
+                }
+            }
+            if ($billetsForthisDay >= 1000){
+                array_push($days, $date);
+            }
+        }
+        $data = [
+            'days' => $days
+        ];
+        return new JsonResponse($data);
     }
 }
