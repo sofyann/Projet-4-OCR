@@ -1,0 +1,28 @@
+AppBundle\Entity\Commanditaire:
+    commanditaire_{1..1000}:
+      nom: <lastName()>
+      prenom: <firstname()>
+      adresse: <streetAddress()>
+      pays: France
+      ville: Paris
+      codePostal: 75000
+      phone: <phoneNumber()>
+      email: <email()>
+
+AppBundle\Entity\Commande:
+    commande_{1..1000}:
+      dateDeCommande: <date()>
+      dateDeVisite: 2018-01-26
+      prixTotal: 50
+      codeReservation: 123456
+      duree: '50%? halfDay : fullDay'
+      commanditaire: '@commanditaire_*'
+
+
+AppBundle\Entity\Billet:
+    billet_{1..1000}:
+      nom: <lastName()>
+      prenom: <firstname()>
+      dateDeNaissance: <date()>
+      tarifReduit: '50%? 0 : 1'
+      commande: '@commande_*'
