@@ -13,6 +13,11 @@ $(document).ready(function () {
         var currentMonth = currentDate.getMonth()+1;
         var currentDay = currentDate.getDate();
 
+        if (month === currentMonth){
+            $('#prev').hide();
+        } else {
+            $('#prev').show();
+        }
         for (var i = 1; i <= numberOfDaysInMonth; i++){
             var dayInTheWeek = daysInWeek(month, year, i);
             // on met le dimanche en dernier jour de la semaine
@@ -65,6 +70,7 @@ $(document).ready(function () {
         if (currentYear === year && currentMonth === month){
             $('#'+currentDay).addClass("currentDay");
         }
+        ajaxRequest(month, year);
     }
     var date = new Date();
     var year = date.getFullYear();
@@ -107,6 +113,15 @@ $(document).ready(function () {
         calendarGenerate(year, month);
     });
 
+    $("#prev").click(function () {
+        month--;
+        if (month < 1){
+            year--;
+            month = 12;
+        }
+        calendarGenerate(year, month);
+    });
+
     $("#calendar").on("click", ".clickable",function () {
         var day = $(this).text();
         daySelected = day;
@@ -140,4 +155,28 @@ $(document).ready(function () {
             $('#app_bundle_commande_type_duree_0').prop('checked', true);
         }
     }
+
+    function ajaxRequest(month, year){
+        if (month < 10){
+            month = '0'+month;
+        }
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: 'http://localhost:8000/calendar/'+year+'/'+month+'',
+            success: function (data) {
+                days = data.days;
+                for(var i = 0; i < days.length; i++){
+                    console.log(days[i]);
+                    $('#'+days[i]).addClass('notClickable');
+                    $('#'+days[i]).removeClass('clickable');
+                }
+            },
+            error: function () {
+                alert('la requête n\'a pas abouti');
+            }
+        });
+    }
+
+
 });

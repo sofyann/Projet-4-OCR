@@ -201,7 +201,7 @@ class MainController extends Controller
                 }
             }
             if ($billetsForthisDay >= 1000){
-                array_push($days, $date);
+                array_push($days, $date->format('d'));
             }
         }
         $data = [

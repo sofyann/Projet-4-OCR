@@ -6,11 +6,6 @@ body{
 .currentDay{
   color: white;
 }
-#next{
-    cursor: pointer;
-    font-size: 18px;
-    padding: 5px;
-}
 #calendar{
     background-color: #D9EAF5;
     margin-left: 10px;
@@ -29,6 +24,17 @@ h1, table{
 #next{
     float: right;
     margin-top: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+}
+#prev{
+    float: left;
+    margin-top: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 5px;
+
 }
 #week, h1{
     color: #4A7494;
@@ -38,10 +44,10 @@ table{
     border-spacing: 3px 5px;
     font-size: 16px;
 }
-#monthAndYear{
-    margin-top: 15px;
-    margin-left: 20px;
-}
+/*#monthAndYear{*/
+    /*margin-top: 15px;*/
+    /*margin-left: 20px;*/
+/*}*/
 
 .clickable{
     cursor: pointer;
