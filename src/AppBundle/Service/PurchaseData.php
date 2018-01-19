@@ -9,7 +9,9 @@
 namespace AppBundle\Service;
 
 
+use function dump;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use Symfony\Component\Intl\Intl;
 
 class PurchaseData
 {
@@ -22,9 +24,11 @@ class PurchaseData
     }
 
     public function setOrder($data){
-
-
+        $countries = Intl::getRegionBundle()->getCountryNames();
         $visitors = $data['visitors'];
+        foreach ($visitors as $visitor){
+            $visitor['pays'] = $countries[$visitor['pays']];
+        }
         $visitors = $this->priceCalc->priceByAge($visitors);
         $totalPrice = $this->priceCalc->getTotalPrice();
         $this->session->set('date', $data['date']);
@@ -49,6 +53,7 @@ class PurchaseData
     }
 
     public function setBuyer($data){
+        $countries = Intl::getRegionBundle()->getCountryNames();
         $commanditaire = [
             'prenom' => $data['prenom'],
             'nom' => $data['nom'],
@@ -57,7 +62,7 @@ class PurchaseData
             'adresse' => $data['adresse'],
             'codePostal' => $data['codePostal'],
             'ville' => $data['ville'],
-            'pays' => $data['pays'],
+            'pays' => $countries[$data['pays']],
         ];
         $this->session->set('commanditaire', $commanditaire);
     }

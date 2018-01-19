@@ -3,7 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Form\CommandeType;
-use AppBundle\Form\Coordonnee;
+use AppBundle\Form\CoordonneeType;
 use function cal_days_in_month;
 use const CAL_GREGORIAN;
 use function count;
@@ -76,7 +76,7 @@ class MainController extends Controller
             $session->set('step', 0);
             return $this->redirectToRoute('main');
         } else {
-            $form = $this->createForm(Coordonnee::class);
+            $form = $this->createForm(CoordonneeType::class);
             if ($request->isMethod('POST')){
                 $form->handleRequest($request);
                 if ($form->isSubmitted() && $form->isValid()){

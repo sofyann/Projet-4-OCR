@@ -80,7 +80,7 @@
                     <span class="glyphicon glyphicon-minus-sign" id="deleteVisitor"></span>
                 </p>
 
-                {{ form_start(form, {'attr' : {'class': 'form-horizontal needs-validation', 'novalidate' : 'novalidate'}} ) }}
+                {{ form_start(form, {'attr' : {'class': 'form-horizontal needs-validation'}} ) }}
                     <div class="form-group" style="float: right">
                         {{ form_widget(form.duree, {'attr' : {'class' : 'duree'}}) }}
                         {{ form_errors(form.duree, {'attr': {'class' : 'typeBilletError'}}) }}

@@ -28,14 +28,17 @@
         <div class="col-md-6">
             {{ form_label(coordForm.prenom, "Prénom") }}
             {{ form_widget(coordForm.prenom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(coordForm.prenom, {'attr': {'class': 'form-control'}}) }}
         </div>
         <div class="col-md-6">
             {{ form_label(coordForm.nom, "Nom") }}
             {{ form_widget(coordForm.nom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(coordForm.nom, {'attr': {'class': 'form-control'}}) }}
         </div>
         <div class="col-md-12">
             {{ form_label(coordForm.mail, "Email") }}
             {{ form_widget(coordForm.mail, {'attr':{'class':'form-control'}}) }}
+            {{ form_errors(coordForm.mail, {'attr':{'class':'form-control'}}) }}
         </div>
         <div class="col-md-6">
             {{ form_label(coordForm.num, "Numéro") }}
@@ -46,12 +49,15 @@
         <div class="col-md-6">
             {{ form_label(coordForm.codePostal, "Code Postal") }}
             {{ form_widget(coordForm.codePostal, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(coordForm.codePostal, {'attr': {'class': 'form-control'}}) }}
             {{ form_label(coordForm.pays, "Pays") }}
             {{ form_widget(coordForm.pays, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(coordForm.pays, {'attr': {'class': 'form-control'}}) }}
         </div>
         <div class="col-md-12">
             {{ form_label(coordForm.adresse, "Adresse") }}
             {{ form_widget(coordForm.adresse, {'attr':{'class':'form-control'}}) }}
+            {{ form_errors(coordForm.adresse, {'attr':{'class':'form-control'}}) }}
         </div>
 
         <div class="btn-submit">
