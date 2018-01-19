@@ -1,12 +1,17 @@
 $(document).ready(function () {
 
 
+
     var container = $('.js-visitor-wrapper');
-    var index = 0;
+    var index = container.data('index');
 
     if(index ===0){
-
         addVisitor();
+    } else {
+        changeNumberOfVisitorsValue();
+        for(var i = 1; i <= index; i++){
+            $('.rowVisitor label').text('Visiteur n°' + i);
+        }
     }
     function addVisitor() {
         var template = container.attr('data-prototype')
@@ -42,5 +47,5 @@ $(document).ready(function () {
         e.preventDefault();
         return false;
     });
-
+    $('[data-toggle="tooltip"]').tooltip();
 });

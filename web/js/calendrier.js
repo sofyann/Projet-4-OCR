@@ -76,7 +76,12 @@ $(document).ready(function () {
     var year = date.getFullYear();
     var month = date.getMonth()+1;
     calendarGenerate(year, month);
+    var dateVal = $('#app_bundle_commande_type_date').val();
+    if (Date.parse(dateVal)){
+        var dateExist = new Date(dateVal);
 
+        selectionDay(dateExist.getDate());
+    }
 
     // Nombre de jours dans un mois
     function daysInMonth(month, year){

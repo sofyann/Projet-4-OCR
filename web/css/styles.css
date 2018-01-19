@@ -48,8 +48,9 @@ body{
 .label-visitor{
     color: white;
     font-weight: normal;
-    margin-left: 10px;
-    float: left;
+    /*margin-left: 10px;*/
+    /*float: left;*/
+    text-align: center;
 }
 #nbVisitors{
     float: left;
@@ -61,6 +62,7 @@ body{
 
     color: white;
     font-size: 15px;
+    margin-left: 30px;
 }
 
 .tarif-reduit label{
@@ -105,12 +107,24 @@ body{
 .page-header{
     text-align: center;
 }
-/*.rowPayment{*/
-    /*display: block;*/
-    /*vertical-align: middle;*/
-/*}*/
 .errorPayment{
     height: 20px;
     color: red;
     margin-bottom: 10px;
+}
+.typeBilletError{
+    margin: 0 auto;
+}
+
+.col-md-1{
+    padding-right: 0;
+}
+.col-md-3{
+    padding: 0;
+}
+.col-md-2{
+    padding: 0;
+}
+.fields{
+    padding: 0;
 }

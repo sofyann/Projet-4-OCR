@@ -1,30 +1,26 @@
 {% import _self as visitorMacros %}
-
 {% macro printVisitorRow(visitorForm) %}
-    <div class="form-group rowVisitor">
-        {{ form_label(visitorForm, null, {'label_attr': {'class' : 'control-label label-visitor'}}) }}
-        <div class="col-md-2">
-            {{ form_widget(visitorForm.prenom) }}
+    <div  class="form-group rowVisitor ">
+        <div class="col-md-1">
+
+            {{ form_label(visitorForm, null, {'label_attr': {'class' : 'control-label label-visitor'}}) }}
         </div>
-        <div class="col-md-2">
-            {{ form_widget(visitorForm.nom) }}
-        </div>
-        <div class="col-md-2">
-            {{ form_widget(visitorForm.pays) }}
-        </div>
-        <div class="col-md-2">
-            {{ form_widget(visitorForm.date_de_naissance) }}
-        </div>
-        <div class="col-md-2 checkbox-inline tarif-reduit">
+            {{ form_row(visitorForm.prenom) }}
+            {{ form_row(visitorForm.nom) }}
+            {{ form_row(visitorForm.pays) }}
+            {{ form_row(visitorForm.date_de_naissance) }}
+        <div class="checkbox-inline tarif-reduit col-md-2">
             {{ form_widget(visitorForm.tarif_reduit) }}
             {{ form_label(visitorForm.tarif_reduit) }}
         </div>
+
     </div>
+
 
 {% endmacro %}
 
-
 {% extends 'base.html.twig' %}
+{% form_theme form 'FormTheme.html.twig' %}
     {% block title %}
         Musée du Louvre
     {% endblock %}
@@ -84,15 +80,21 @@
                     <span class="glyphicon glyphicon-minus-sign" id="deleteVisitor"></span>
                 </p>
 
-                {{ form_start(form, {'attr' : {'class': 'form-horizontal'}} ) }}
+                {{ form_start(form, {'attr' : {'class': 'form-horizontal needs-validation', 'novalidate' : 'novalidate'}} ) }}
                     <div class="form-group" style="float: right">
                         {{ form_widget(form.duree, {'attr' : {'class' : 'duree'}}) }}
+                        {{ form_errors(form.duree, {'attr': {'class' : 'typeBilletError'}}) }}
                     </div>
                 {{ form_widget(form.date, {'attr': {'class': 'form-control hidden'}}) }}
 
-                <div class="js-visitor-wrapper" data-prototype="{{ visitorMacros.printVisitorRow(form.visitors.vars.prototype)|e('html_attr') }}">
+                <div class="js-visitor-wrapper" id="{{ form.visitors.vars.id }}" data-prototype="{{ visitorMacros.printVisitorRow(form.visitors.vars.prototype)|e('html_attr') }}"
+                data-index="{{ form.visitors|length }}">
+                    {% set number = form.visitors|length %}
+                    {% for visitor in form.visitors %}
+                        {{ visitorMacros.printVisitorRow(visitor) }}
+                    {% endfor %}
                 </div>
-
+                {{ form_errors(form.date) }}
                 {{ form_errors(form) }}
                 <div class="btn-submit">
                     <input type="submit" value="Acheter vos billets" class="btn btn-primary btn-submit">
