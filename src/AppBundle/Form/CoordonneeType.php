@@ -37,6 +37,9 @@ class CoordonneeType extends AbstractType
                 'constraints' => [
                     new NotNull([
                         'message' => 'Vous devez indiquer votre adresse mail.'
+                    ]),
+                    new Email([
+                        'message' => 'Votre adresse mail est invalide.'
                     ])
                 ]
             ])
@@ -51,9 +54,6 @@ class CoordonneeType extends AbstractType
                 'constraints' => [
                     new NotNull([
                         'message' => 'Vous devez choisir le type de billet.'
-                    ]),
-                    new Email([
-                        'message' => 'Votre adresse mail est invalide.'
                     ])
                 ]
             ])

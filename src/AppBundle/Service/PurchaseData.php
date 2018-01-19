@@ -10,6 +10,7 @@ namespace AppBundle\Service;
 
 
 use function dump;
+use function sizeof;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Intl\Intl;
 
@@ -26,8 +27,8 @@ class PurchaseData
     public function setOrder($data){
         $countries = Intl::getRegionBundle()->getCountryNames();
         $visitors = $data['visitors'];
-        foreach ($visitors as $visitor){
-            $visitor['pays'] = $countries[$visitor['pays']];
+        for($i = 0; $i < sizeof($visitors); $i++){
+            $visitors[$i]['pays'] = $countries[$visitors[$i]['pays']];
         }
         $visitors = $this->priceCalc->priceByAge($visitors);
         $totalPrice = $this->priceCalc->getTotalPrice();

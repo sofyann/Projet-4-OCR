@@ -129,7 +129,6 @@ class MainController extends Controller
                     $visiteurs =$session->get('visiteurs');
                     $email = $session->get('commanditaire');
                     $email = $email['mail'];
-
                     $message = (new Swift_Message('Hello email'))
                         ->setFrom('Musee-du-Louvre@exemple.fr')
                         ->setTo($email)
