@@ -1,14 +1,16 @@
 body{
     font-family: "Segoe UI";
 }
-
+footer{
+    text-align: center;
+}
 .banner{
     background: url("../images/banniere.jpg") no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
     background-size: cover;
-    height: 100vh;
+    height: 50vh;
     width: 100%;
 }
 
@@ -127,4 +129,10 @@ body{
 }
 .fields{
     padding: 0;
+}
+.errorContent{
+    text-align: center;
+}
+.errorText{
+    font-size: 25px;
 }
