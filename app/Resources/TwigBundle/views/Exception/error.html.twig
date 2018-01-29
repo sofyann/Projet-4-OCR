@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+ {% block title %}
+   {{ status_text }}
+ {% endblock %}
+
+{% block body %}
+    <div class="container errorContent">
+        <h1>Oops!</h1>
+        <h2>{{ status_code }} {{ status_text }}</h2>
+
+        <div >
+            <p class="errorText">Il semble que la page que vous souhaitez n'existe pas.</p>
+            <a class="btn btn-danger" href="{{ path('main') }}">Retour à l'accueil</a>
+        </div>
+    </div>
+{% endblock %}

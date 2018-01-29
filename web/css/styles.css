@@ -1,0 +1,138 @@
+body{
+    font-family: "Segoe UI";
+}
+footer{
+    text-align: center;
+}
+.banner{
+    background: url("../images/banniere.jpg") no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 50vh;
+    width: 100%;
+}
+
+.content{
+    margin-top: 50px;
+}
+
+.rowVisitor{
+    margin-top: 10px;
+    background-color: #6AA4E9;
+    padding: 5px;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 5px;
+    margin-left: 0;
+}
+#form{
+    margin-top: 30px;
+
+}
+.btn-submit{
+    text-align: center;
+    margin-top: 10px;
+}
+
+#addVisitor, #deleteVisitor{
+    cursor: pointer;
+}
+.well{
+    padding: 0;
+}
+
+.form-group, .form-horizontal {
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+}
+.label-visitor{
+    color: white;
+    font-weight: normal;
+    /*margin-left: 10px;*/
+    /*float: left;*/
+    text-align: center;
+}
+#nbVisitors{
+    float: left;
+    font-size: 20px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.tarif-reduit{
+
+    color: white;
+    font-size: 15px;
+    margin-left: 30px;
+}
+
+.tarif-reduit label{
+    font-weight: normal !important;
+}
+
+.duree label{
+    margin-top: 10px;
+    margin-left: 5px;
+    margin-right: 10px;
+    font-weight: normal !important;
+    font-size: 20px;
+}
+
+.headTable{
+    background-color: #6AA4E9;
+    color: white;
+}
+
+
+.step-checkout{
+    font-size: 15px;
+    background-color: #2b669a;
+    padding: 7px;
+    position: relative;
+    border: 1px white solid;
+}
+
+.current-step{
+    background-color: #6AA4E9;
+}
+
+.checkout-steps{
+    text-align: center;
+    color: white;
+    text-transform: uppercase;
+    margin-top: 10px;
+    margin-bottom: 20px !important;
+    border-radius: 1px;
+}
+
+.page-header{
+    text-align: center;
+}
+.errorPayment{
+    height: 20px;
+    color: red;
+    margin-bottom: 10px;
+}
+.typeBilletError{
+    margin: 0 auto;
+}
+
+.col-md-1{
+    padding-right: 0;
+}
+.col-md-3{
+    padding: 0;
+}
+.col-md-2{
+    padding: 0;
+}
+.fields{
+    padding: 0;
+}
+.errorContent{
+    text-align: center;
+}
+.errorText{
+    font-size: 25px;
+}

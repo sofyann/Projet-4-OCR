@@ -1,0 +1,68 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <div class="container">
+        <div class="checkout-steps">
+            <div class="row">
+
+                <div class="col-md-3 step-checkout ">
+                    <span class="step-title">Détails de la commande</span>
+                </div>
+                <div class="col-md-3 step-checkout current-step">
+                    <span class="step-title">Vos coordoonées</span>
+                </div>
+                <div class="col-md-3 step-checkout">
+                    <span class="step-title">Paiement</span>
+                </div>
+                <div class="col-md-3 step-checkout">
+                    <span class="step-title">Confirmation</span>
+                </div>
+            </div>
+        </div>
+
+        <h1 class="page-header">Vos coordoonées</h1>
+
+
+        {{ form_start(coordForm) }}
+        <div class="col-md-6">
+            {{ form_label(coordForm.prenom, "Prénom") }}
+            {{ form_widget(coordForm.prenom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(coordForm.prenom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_label(coordForm.nom, "Nom") }}
+            {{ form_widget(coordForm.nom, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(coordForm.nom, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-12">
+            {{ form_label(coordForm.mail, "Email") }}
+            {{ form_widget(coordForm.mail, {'attr':{'class':'form-control'}}) }}
+            {{ form_errors(coordForm.mail, {'attr':{'class':'form-control'}}) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_label(coordForm.num, "Numéro") }}
+            {{ form_widget(coordForm.num, {'attr': {'class': 'form-control'}}) }}
+            {{ form_label(coordForm.ville, "Ville") }}
+            {{ form_widget(coordForm.ville, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-6">
+            {{ form_label(coordForm.codePostal, "Code Postal") }}
+            {{ form_widget(coordForm.codePostal, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(coordForm.codePostal, {'attr': {'class': 'form-control'}}) }}
+            {{ form_label(coordForm.pays, "Pays") }}
+            {{ form_widget(coordForm.pays, {'attr': {'class': 'form-control'}}) }}
+            {{ form_errors(coordForm.pays, {'attr': {'class': 'form-control'}}) }}
+        </div>
+        <div class="col-md-12">
+            {{ form_label(coordForm.adresse, "Adresse") }}
+            {{ form_widget(coordForm.adresse, {'attr':{'class':'form-control'}}) }}
+            {{ form_errors(coordForm.adresse, {'attr':{'class':'form-control'}}) }}
+        </div>
+
+        <div class="btn-submit">
+            <input type="submit" value="Etape suivante" class="btn btn-primary btn-submit">
+        </div>
+        {{ form_end(coordForm) }}
+    </div>
+{% endblock %}

@@ -1,0 +1,34 @@
+{% use 'form_div_layout.html.twig' %}
+{% block form_errors -%}
+    {% if errors|length > 0 -%}
+        {% if form.parent %}<span class="help-block">{% else %}<div class="alert alert-danger">{% endif %}
+        {%- for error in errors -%}
+            <span data-toggle="tooltip" class="glyphicon glyphicon-exclamation-sign" title="{{ error.message }}"></span>
+        {%- endfor -%}
+        {% if form.parent %}</span>{% else %}</div>{% endif %}
+    {%- endif %}
+{%- endblock form_errors %}
+
+
+{% block form_row -%}
+    {% set showErrorIcon = (not compound or force_error|default(false)) and not valid %}
+    <div class=" col-md-2 {% if (not compound or force_error|default(false)) and not valid %} has-error{% endif %}">
+        <div class="col-md-10 fields">
+            {{- form_widget(form) -}}
+        </div>
+        <div class="col-md-2">
+            {{- form_errors(form) -}}
+        </div>
+    </div>
+{%- endblock form_row %}
+
+{% block form_widget_simple -%}
+    {% set showErrorIcon = false %}
+    {% if type is not defined or type not in ['file', 'hidden', 'date'] %}
+        {% set showErrorIcon = (not compound or force_error|default(false)) and not valid %}
+    {% endif %}
+    {{- parent() -}}
+    {% if showErrorIcon %}
+        <span class="glyphicon glyphicon-remove form-control-feedback" aria-hidden="true"></span>
+    {% endif %}
+{%- endblock form_widget_simple %}

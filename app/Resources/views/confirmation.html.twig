@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+
+    <div class="container">
+        <div class="checkout-steps">
+            <div class="row">
+
+                <div class="col-md-3 step-checkout ">
+                    <span class="step-title">Détails de la commande</span>
+                </div>
+                <div class="col-md-3 step-checkout ">
+                    <span class="step-title">Vos coordoonées</span>
+                </div>
+                <div class="col-md-3 step-checkout ">
+                    <span class="step-title">Paiement</span>
+                </div>
+                <div class="col-md-3 step-checkout current-step">
+                    <span class="step-title">Confirmation</span>
+                </div>
+            </div>
+        </div>
+        <h1 class="page-header">Confirmation</h1>
+        <div style="text-align: center">
+            <p>Nous vous remercions pour votre achat</p>
+            <p>Votre code de réservation est : {{ reservationCode }}</p>
+            <p>Vos billets ont été envoyer à l'adresse suivante : {{ mail }}</p>
+
+
+            <a class="btn btn-primary" href="{{ path('main') }}">Retour à l'accueil</a>
+
+        </div>
+
+    </div>
+
+{% endblock %}

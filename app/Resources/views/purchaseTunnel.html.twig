@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container">
+
+    <div class="checkout-steps">
+        <div class="row">
+
+            <div class="col-md-3 step-checkout current-step">
+                <span class="step-title">Détails de la commande</span>
+            </div>
+            <div class="col-md-3 step-checkout">
+                <span class="step-title">Vos coordoonées</span>
+            </div>
+            <div class="col-md-3 step-checkout">
+                <span class="step-title">Paiement</span>
+            </div>
+            <div class="col-md-3 step-checkout">
+                <span class="step-title">Confirmation</span>
+            </div>
+        </div>
+    </div>
+
+    <h1 class="page-header">Détails de la commande</h1>
+
+      <table class="tableCheckout table table-bordered">
+          <thead class="headTable">
+            <tr>
+                <th>Visiteur n°</th>
+                <th>Prénom</th>
+                <th>Nom</th>
+                <th>Date de naissance</th>
+                <th>Pays</th>
+                <th>Tarif réduit</th>
+                <th>Prix</th>
+            </tr>
+          </thead>
+          <tbody>
+          {% for visiteur in visiteurs %}
+            <tr>
+              <td>{{ loop.index }}</td>
+              <td>{{ visiteur.prenom }}</td>
+              <td>{{ visiteur.nom }}</td>
+              <td>{{ visiteur.date_de_naissance|date('d/m/Y') }}</td>
+              <td>{{ visiteur.pays }}</td>
+              <td>
+                  {% if visiteur.tarif_reduit == false %}
+                      Non
+                  {% elseif visiteur.tarif_reduit == true  %}
+                      Oui
+                  {% endif %}
+              </td>
+              <td>{{ visiteur.0}}€</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+      </table>
+
+
+    <div class="row">
+
+        <div class="col-md-4">
+            <table class="table table-bordered">
+
+               <thead class="headTable">
+               <tr>
+                   <th>Date de la visite</th>
+                   <th>Durée de la visite</th>
+                   <th>Prix Total</th>
+
+               </tr>
+               </thead>
+               <tbody>
+               <tr>
+                   <td>{{ date|date('d/m/Y') }}</td>
+                   <td>
+                       {% if duree == 'halfDay' %}
+                           Demi-journée
+                       {% elseif duree == 'fullDay' %}
+                           Journée entière
+                       {% endif %}
+                   </td>
+                   <td>{{ prixTotal }}€</td>
+               </tr>
+               </tbody>
+            </table>
+        </div>
+        <div class="col-md-8">
+            <a class="btn btn-primary" style="float:right;" href="{{ path('coordonnee') }}">Etape suivante</a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
