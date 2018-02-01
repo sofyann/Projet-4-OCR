@@ -30,7 +30,7 @@ class PurchaseData
         for($i = 0; $i < sizeof($visitors); $i++){
             $visitors[$i]['pays'] = $countries[$visitors[$i]['pays']];
         }
-        $visitors = $this->priceCalc->priceByAge($visitors);
+        $visitors = $this->priceCalc->priceByAgeFor($visitors);
         $totalPrice = $this->priceCalc->getTotalPrice();
         $this->session->set('date', $data['date']);
         $this->session->set('duree', $data['duree']);
