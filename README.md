@@ -31,7 +31,8 @@ php bin/console doctrine:schema:update --dump-sql
 php bin/console doctrine:schema:update --force
 ```
 **Le serveur**
-Pour finir, vous pouvez choisir d'utiliser Nginx ou Apache. Ou le serveur web
+
+Pour finir, vous pouvez choisir d'utiliser Nginx ou Apache. Ou encore le serveur web
 intégré:
  ```
  php bin/console server:run
