@@ -18,7 +18,7 @@ use function sizeof;
 class Price {
     private $totalPrice;
 
-    public function priceByAge($visitors = []){
+    public function priceByAgeFor($visitors = []){
         $now = new DateTime();
 
         for ($i = 0; $i < sizeof($visitors); $i++){
