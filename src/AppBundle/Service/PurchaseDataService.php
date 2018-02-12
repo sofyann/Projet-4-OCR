@@ -14,11 +14,11 @@ use function sizeof;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Intl\Intl;
 
-class PurchaseData
+class PurchaseDataService
 {
     private $session;
     private $priceCalc;
-    public function __construct(SessionInterface $session, Price $priceCalc)
+    public function __construct(SessionInterface $session, PriceService $priceCalc)
     {
         $this->session = $session;
         $this->priceCalc = $priceCalc;
@@ -30,7 +30,7 @@ class PurchaseData
         for($i = 0; $i < sizeof($visitors); $i++){
             $visitors[$i]['pays'] = $countries[$visitors[$i]['pays']];
         }
-        $visitors = $this->priceCalc->priceByAgeFor($visitors);
+        $visitors = $this->priceCalc->setRateFor($visitors);
         $totalPrice = $this->priceCalc->getTotalPrice();
         $this->session->set('date', $data['date']);
         $this->session->set('duree', $data['duree']);

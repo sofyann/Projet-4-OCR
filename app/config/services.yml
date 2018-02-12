@@ -34,11 +34,11 @@ services:
     #     arguments:
     #         $someArgument: 'some_value'
     app.price:
-        class: AppBundle\Service\Price
+        class: AppBundle\Service\PriceService
         public: true
     app.purchase_data:
-        class: AppBundle\Service\PurchaseData
+        class: AppBundle\Service\PurchaseDataService
         public: true
     app.bdd_order:
-        class: AppBundle\Service\BddOrder
+        class: AppBundle\Service\BddOrderService
         public: true

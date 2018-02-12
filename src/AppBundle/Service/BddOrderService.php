@@ -19,17 +19,17 @@ use function getdate;
 use function sizeof;
 use function substr;
 
-class BddOrder
+class BddOrderService
 {
     private $purchase;
     private $em;
     private $reservationCode;
     /**
-     * BddOrder constructor.
+     * BddOrderService constructor.
      * @param $purchase
      * @param $em
      */
-    public function __construct(PurchaseData $purchase, EntityManagerInterface $em)
+    public function __construct(PurchaseDataService $purchase, EntityManagerInterface $em)
     {
         $this->purchase = $purchase;
         $this->em = $em;

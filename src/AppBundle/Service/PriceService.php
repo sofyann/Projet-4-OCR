@@ -15,10 +15,10 @@ use function dump;
 use function intval;
 use function sizeof;
 
-class Price {
+class PriceService {
     private $totalPrice;
 
-    public function priceByAgeFor($visitors = []){
+    public function setRateFor($visitors = []){
         $now = new DateTime();
 
         for ($i = 0; $i < sizeof($visitors); $i++){
