@@ -148,7 +148,6 @@ $(document).ready(function () {
     });
 
     function selectionDay(day) {
-        console.log(daySelected);
         $('.daySelected').removeClass('daySelected');
 
         $('#'+day).addClass('daySelected');
@@ -171,6 +170,7 @@ $(document).ready(function () {
             url: 'http://localhost:8000/calendar/'+year+'/'+month+'',
             success: function (data) {
                 days = data.days;
+                console.log(days);
                 for(var i = 0; i < days.length; i++){
                     console.log(days[i]);
                     $('#'+days[i]).addClass('notClickable');

@@ -4,12 +4,12 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * Visitor
- *
- * @ORM\Table(name="visitor")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\VisitorRepository")
- */
+///**
+// * Visitor
+// *
+// * @ORM\Table(name="visitor")
+// * @ORM\Entity(repositoryClass="AppBundle\Repository\VisitorRepository")
+// */
 class Visitor
 {
     /**

@@ -38,3 +38,13 @@ intégré:
  php bin/console server:run
  ```
 Le site sera accessible à l'adresse 'http://localhost:8000'
+
+**Ajouter des fixtures**
+
+Pour tester par exemple les jours où le nombre de billet vendu est supérieur à 1000 et les voirs bloquer sur le calendrier
+il de se rendre dans src\AppBundle\DataFixtures\ORM\fixtures.yml et modifier la date de visite pour l'entité Commande.
+
+**Tests unitaires sous Windows**
+ ```
+ vendor\bin\phpunit
+ ```

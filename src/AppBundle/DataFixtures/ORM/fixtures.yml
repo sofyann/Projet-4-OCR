@@ -12,7 +12,7 @@ AppBundle\Entity\Commanditaire:
 AppBundle\Entity\Commande:
     commande_{1..1200}:
       dateDeCommande: <(new \DateTime())>
-      dateDeVisite: <(new \DateTime('2018-01-26'))>
+      dateDeVisite: <(new \DateTime('2018-05-17'))>
       prixTotal: 50
       codeReservation (unique):  <text(15)>
       duree: '50%? halfDay : fullDay'
